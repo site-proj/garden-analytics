@@ -1,51 +1,637 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173d30"><title>Garden Analytics | Inteligência de reputação</title>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden Analytics | Reputação</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
-:root{--ink:#19352b;--muted:#76877f;--green:#205e46;--gold:#bc965a;--line:#e6eae5;--bg:#f6f7f4;--white:#fff;--red:#a85646}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px 'DM Sans',system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit}
-.top{background:#173d30;color:white}.top-inner{max-width:1240px;margin:auto;padding:28px 24px 90px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:14px}.mark{width:48px;height:48px;background:#ffffff15;border:1px solid #ffffff35;display:grid;place-items:center;border-radius:14px;font-size:27px}.brand-name{font:600 28px 'Playfair Display',Georgia,serif;letter-spacing:.2px}.brand-sub{color:#cbdcd0;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px}.top-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.chip{font-size:12px;padding:9px 13px;border:1px solid #ffffff40;border-radius:40px;color:#e4eee8}.chip i{display:inline-block;background:#dfb76c;width:7px;height:7px;border-radius:50%;margin-right:7px}.top-date{font-size:13px;color:#d4e4d8}
-main{max-width:1240px;margin:-60px auto 0;padding:0 24px 60px;position:relative}
-.hero{background:white;border:1px solid var(--line);border-radius:20px;padding:24px 28px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;box-shadow:0 14px 36px #112f2010}
-.eyebrow{text-transform:uppercase;letter-spacing:1.8px;font-size:11px;color:var(--gold);font-weight:700}.hero h1{font:600 27px 'Playfair Display',Georgia,serif;margin:5px 0 5px}.hero p{margin:0;color:var(--muted);font-size:13px;max-width:650px}.pill{font-size:12px;border-radius:30px;background:#fff7e9;border:1px solid #f0dfbe;color:#865e28;padding:8px 12px}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
-.metric{background:white;border:1px solid var(--line);border-radius:18px;padding:22px 23px;min-height:146px;box-shadow:0 4px 15px #173d3006}.metric-top{display:flex;justify-content:space-between;align-items:center;color:#677b70;font-size:12px;font-weight:700;gap:8px}.metric .symbol{width:32px;height:32px;border-radius:10px;background:#f1f6f1;display:grid;place-items:center;color:var(--green);font-size:18px}.metric strong{font-size:35px;line-height:1.25;display:block;margin-top:10px;letter-spacing:-1px}.metric small{color:var(--muted);font-size:11px}.metric.primary{background:#215f47;color:white;border-color:#215f47}.metric.primary .metric-top,.metric.primary small{color:#d0e7d9}.metric.primary .symbol{background:#ffffff24;color:white}
-.content{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,1fr);gap:18px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:23px;margin-bottom:18px;box-shadow:0 4px 15px #173d3005}
-.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px;flex-wrap:wrap}.head h2{font:600 20px 'Playfair Display',Georgia,serif;margin:0}.small{font-size:12px;color:var(--muted)}.legend{font-size:12px;color:#648171}
-.chart{height:210px;border-bottom:1px solid var(--line);display:flex;align-items:end;gap:12px;padding:12px 4px 1px;position:relative}.bar-day{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:end;gap:5px;min-width:0}.bar-group{height:160px;display:flex;gap:3px;align-items:end;width:100%;max-width:70px;justify-content:center}.bar{width:40%;min-height:0;background:#d8e7de;border-radius:6px 6px 0 0}.bar.review{background:#b99a67}.day-label{font-size:10px;color:var(--muted);height:20px;text-align:center}.empty{width:100%;align-self:center;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
-.field{min-width:0}.field label{display:block;font-weight:700;font-size:12px;margin-bottom:7px}.field input{width:100%;padding:12px 11px;border:1px solid #d7dfd9;border-radius:10px;color:var(--ink);background:white;min-height:46px}.field input:focus{outline:2px solid #bbd9c5;outline-offset:1px}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
-.btn{border:0;border-radius:10px;padding:12px 16px;background:var(--green);color:white;font-weight:700;font-size:13px;min-height:43px}.btn.secondary{background:#edf5ef;color:#245f45}.btn.tertiary{background:#fff;color:#63786a;border:1px solid var(--line)}.btn.danger{background:#fff4f3;color:var(--red)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.goal{padding:14px 0;border-top:1px solid var(--line)}.goal:first-child{border:0;padding-top:0}.goal-line{display:flex;justify-content:space-between;gap:10px;font-size:13px}.goal-line strong{font-size:14px}.progress{height:7px;background:#e9eee9;border-radius:50px;overflow:hidden;margin:12px 0 6px}.progress>div{height:100%;background:#548e6e;border-radius:50px}.goal p{margin:0;font-size:11px;color:var(--muted)}
-.note{padding:12px 13px;border-radius:11px;background:#f6f7f3;color:#66776d;font-size:12px;line-height:1.55;margin-top:14px}.notice{background:#fffbf3;border-color:#f0e6d3;color:#6b624e}
-.file{padding:15px;border:1px dashed #c6d7cc;border-radius:12px;background:#fbfdfa}.file input{width:100%;max-width:100%;font-size:12px}
-.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:540px}th,td{padding:13px 9px;border-bottom:1px solid #e8ede8;text-align:left;font-size:12px}th{font-weight:700;color:#6e8474;background:#f9fbf8}td{color:#435d4f}.foot{font-size:11px;color:#8c9b91;text-align:center;line-height:1.6;margin-top:5px}#status{font-size:12px;color:#216445;margin-top:10px;min-height:17px}
-@media(max-width:950px){.metrics{grid-template-columns:repeat(2,1fr)}.content{grid-template-columns:1fr}.top-inner{padding-bottom:85px}}@media(max-width:560px){.top-inner{padding:22px 17px 83px}.brand-name{font-size:24px}main{padding:0 12px 35px}.hero{padding:20px}.hero h1{font-size:24px}.metrics{gap:9px}.metric{padding:17px 15px;min-height:130px}.metric strong{font-size:29px}.panel{padding:18px}.fields{grid-template-columns:1fr}.bar-group{height:145px}.chart{gap:6px}.top-right{gap:8px}}
-</style></head><body>
-<header class="top"><div class="top-inner"><div class="brand"><div class="mark">🌿</div><div><div class="brand-name">Garden Analytics</div><div class="brand-sub">Inteligência de reputação</div></div></div><div class="top-right"><span class="chip"><i></i> Integração pendente</span><span class="top-date" id="today"></span></div></div></header>
-<main><section class="hero"><div><div class="eyebrow">Visão geral</div><h1>Cada experiência conta.</h1><p>Do primeiro scan à avaliação publicada: acompanhe resultados, entenda tendências e planeje os próximos passos.</p></div><span class="pill">Dados inseridos manualmente</span></section>
-<section class="metrics"><div class="metric primary"><div class="metric-top">Scans registrados <span class="symbol">▦</span></div><strong id="scans">—</strong><small>Último dia informado</small></div><div class="metric"><div class="metric-top">Novas avaliações <span class="symbol">★</span></div><strong id="reviews">—</strong><small>Variação líquida entre registros</small></div><div class="metric"><div class="metric-top">Conversão estimada <span class="symbol">%</span></div><strong id="conversion">—</strong><small>Avaliações ÷ scans do intervalo</small></div><div class="metric"><div class="metric-top">Scans por avaliação <span class="symbol">↗</span></div><strong id="perreview">—</strong><small>Indicador estimado</small></div></section>
-<div class="content"><div>
-<section class="panel"><div class="head"><h2>Evolução diária</h2><span class="legend">▮ Scans &nbsp; <span style="color:#b99a67">▮</span> Avaliações</span></div><div class="chart" id="chart"><div class="empty">Registre pelo menos dois dias para visualizar a evolução.</div></div><p class="small">Novas avaliações representam a diferença entre as contagens acumuladas de dias consecutivos; não representam necessariamente avaliações geradas pelos QR Codes.</p></section>
-<section class="panel"><div class="head"><h2>Registrar acompanhamento</h2><span class="small">Histórico salvo neste navegador</span></div><div class="fields"><div class="field"><label for="date">Data de referência</label><input id="date" type="date"></div><div class="field"><label for="scancount">Scans do dia</label><input id="scancount" type="number" min="0" step="1" placeholder="Ex.: 40"></div><div class="field"><label for="totalreviews">Total acumulado no Google</label><input id="totalreviews" type="number" min="0" step="1" placeholder="Ex.: 1064"></div></div><div class="actions"><button class="btn" id="save">Salvar registro</button></div><div id="status" aria-live="polite"></div><div class="note">Registre o total de avaliações do Google no mesmo horário a cada dia. Para comparar períodos diferentes, os scans e a variação de avaliações precisam cobrir o mesmo intervalo.</div></section>
-<section class="panel"><div class="head"><h2>Histórico de resultados</h2><div class="actions" style="margin:0"><button class="btn secondary" id="export">Exportar CSV</button><button class="btn danger" id="clear">Limpar</button></div></div><div class="tablewrap"><table><thead><tr><th>Data</th><th>Scans</th><th>Total Google</th><th>Novas avaliações</th><th>Conversão</th></tr></thead><tbody id="history"></tbody></table></div></section>
-</div><aside><section class="panel"><div class="head"><h2>Projeções de metas</h2><span class="small">Google</span></div><div id="goals"></div><div class="note">As metas usam o último total de avaliações informado, não os scans realizados.</div></section>
-<section class="panel"><div class="head"><h2>Importar relatório</h2><span class="small">Reputação Garden</span></div><p class="small">Envie um CSV de ranking. O painel identifica os scans acumulados presentes no arquivo, sem confundi-los com avaliações.</p><div class="file"><input id="csv" type="file" accept=".csv,text/csv"></div><div class="note" id="csvresult">Nenhum arquivo importado.</div></section>
-<section class="panel"><div class="head"><h2>Status da automação</h2></div><div class="pill" style="display:inline-block">Aguardando integrações autorizadas</div><p class="small" style="line-height:1.7">A rotina gratuita está programada no GitHub para aproximadamente 02h de Brasília, mas ainda <b>não consulta</b> o Reputação Garden nem o Google. Não informe senhas neste painel.</p><a class="btn secondary" style="display:inline-block;text-decoration:none" href="https://github.com/site-proj/garden-analytics/actions" target="_blank" rel="noopener noreferrer">Ver GitHub Actions ↗</a></section></aside></div>
-<p class="foot">Garden Analytics • Painel independente • Nenhum dado é enviado a um servidor por este formulário. As informações ficam no armazenamento deste navegador. O repositório público não deve conter credenciais ou relatórios privados.</p></main>
+:root {
+  --verde: #173d30;
+  --verde-claro: #2e7054;
+  --dourado: #b99b69;
+  --fundo: #f6f5f1;
+  --texto: #25372f;
+  --cinza: #667a6e;
+  --borda: #e3e8e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+header {
+  background: var(--verde);
+  color: white;
+  padding: 30px 24px 80px;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #000;
+}
+h1, h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.2;
+}
+header h1 {
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+header p {
+  color: #dce9df;
+  margin: 0;
+}
+main {
+  max-width: 1200px;
+  margin: -42px auto 0;
+  padding: 0 20px 50px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 17px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #173d3008;
+}
+.intro h2 {
+  font-size: 27px;
+  margin: 5px 0 10px;
+}
+.intro p { color: var(--cinza); margin: 0; }
+.eyebrow {
+  font-size: 11px;
+  color: var(--dourado);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.metric span {
+  display: block;
+  font-size: 13px;
+  color: var(--cinza);
+  font-weight: 600;
+}
+.metric strong {
+  display: block;
+  font-size: 38px;
+  margin: 10px 0;
+  color: var(--verde);
+}
+.metric small { color: var(--cinza); }
+.layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+h2 { font-size: 23px; margin: 0 0 16px; }
+.muted { color: var(--cinza); font-size: 13px; }
+.fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+label {
+  font-size: 12px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 7px;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cfdad1;
+  border-radius: 9px;
+  font: inherit;
+}
+button {
+  background: var(--verde);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 12px 8px 0 0;
+}
+button:hover { background: var(--verde-claro); }
+button.alt {
+  background: #eaf2ec;
+  color: var(--verde);
+}
+button.danger {
+  background: #f9ecea;
+  color: #9c4941;
+}
+.progress {
+  background: #e9eee8;
+  height: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.fill {
+  background: var(--verde-claro);
+  height: 100%;
+  border-radius: 20px;
+}
+.goal {
+  border-bottom: 1px solid var(--borda);
+  padding: 14px 0;
+}
+.goal:last-child { border: none; }
+.goal-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.note {
+  font-size: 12px;
+  color: var(--cinza);
+  background: #f5f7f3;
+  padding: 13px;
+  border-radius: 9px;
+  margin-top: 15px;
+}
+.chart {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  height: 230px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--borda);
+}
+.day {
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+  font-size: 11px;
+}
+.bars {
+  height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 4px;
+}
+.bar {
+  background: #82b39a;
+  width: 25px;
+  border-radius: 5px 5px 0 0;
+}
+.bar.review { background: var(--dourado); }
+.legend { font-size: 12px; color: var(--cinza); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 530px;
+}
+th,td {
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+  padding: 12px 8px;
+  font-size: 12px;
+}
+th { color: var(--cinza); }
+.tablewrap { overflow-x: auto; }
+.status {
+  display: inline-block;
+  color: #8c652e;
+  background: #fff4e3;
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+footer {
+  text-align: center;
+  color: var(--cinza);
+  font-size: 12px;
+  padding: 30px;
+}
+@media(max-width:950px) {
+  .metrics { grid-template-columns: repeat(2,1fr); }
+  .layout { grid-template-columns: 1fr; }
+}
+@media(max-width:600px) {
+  .header-inner { flex-direction: column; text-align: center; }
+  .logo { width: 95px; height: 95px; }
+  header h1 { font-size: 29px; }
+  .metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metric { padding: 16px; }
+  .metric strong { font-size: 29px; }
+  .fields { grid-template-columns: 1fr; }
+  .card { padding: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="logo-garden.png" alt="Garden Café" class="logo">
+    <div>
+      <h1>Garden Analytics</h1>
+      <p>Inteligência de reputação e experiência do cliente</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="card intro">
+  <div class="eyebrow">Inteligência de reputação</div>
+  <h2>Cada experiência conta.</h2>
+  <p>
+    Acompanhe os QR Codes escaneados, o crescimento das
+    avaliações do Google e os resultados do Garden.
+  </p>
+</section>
+
+<div class="metrics">
+  <div class="card metric">
+    <span>Scans do último registro</span>
+    <strong id="scans">—</strong>
+    <small>Reputação Garden</small>
+  </div>
+
+  <div class="card metric">
+    <span>Novas avaliações</span>
+    <strong id="reviews">—</strong>
+    <small>Crescimento líquido no Google</small>
+  </div>
+
+  <div class="card metric">
+    <span>Conversão estimada</span>
+    <strong id="conversion">—</strong>
+    <small>Avaliações ÷ scans</small>
+  </div>
+
+  <div class="card metric">
+    <span>Scans por avaliação</span>
+    <strong id="ratio">—</strong>
+    <small>Média estimada</small>
+  </div>
+</div>
+
+<div class="layout">
+  <div>
+
+    <section class="card">
+      <h2>Evolução diária</h2>
+      <p class="legend">■ Verde: scans | ■ Dourado: avaliações</p>
+      <div id="chart" class="chart">
+        <p class="muted">Aguardando registros.</p>
+      </div>
+      <p class="muted">
+        O gráfico utiliza as diferenças entre os totais
+        de avaliações informados em dias consecutivos.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Registrar acompanhamento</h2>
+
+      <div class="fields">
+        <div>
+          <label>Data</label>
+          <input id="date" type="date">
+        </div>
+
+        <div>
+          <label>Scans do dia</label>
+          <input id="scanInput" type="number" min="0" placeholder="Ex.: 40">
+        </div>
+
+        <div>
+          <label>Total de avaliações no Google</label>
+          <input id="reviewInput" type="number" min="0" placeholder="Ex.: 1064">
+        </div>
+      </div>
+
+      <button onclick="saveRecord()">Salvar registro</button>
+      <p id="message" class="muted"></p>
+
+      <div class="note">
+        O total de avaliações deve ser registrado no mesmo horário
+        diariamente. A conversão é uma estimativa, pois nem toda
+        avaliação necessariamente veio de um QR Code.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Histórico de resultados</h2>
+
+      <button class="alt" onclick="exportHistory()">Exportar CSV</button>
+      <button class="danger" onclick="clearHistory()">Limpar histórico</button>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Scans</th>
+              <th>Total Google</th>
+              <th>Novas avaliações</th>
+              <th>Conversão</th>
+            </tr>
+          </thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <aside>
+
+    <section class="card">
+      <h2>Metas do Garden</h2>
+      <div id="goals"></div>
+    </section>
+
+    <section class="card">
+      <h2>Importar relatório</h2>
+      <p class="muted">
+        Importe o CSV do Reputação Garden para visualizar
+        o total de scans do arquivo.
+      </p>
+
+      <input type="file" id="csvFile" accept=".csv">
+
+      <div class="note" id="csvResult">
+        Nenhum relatório importado.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Automação</h2>
+      <span class="status">Integrações pendentes</span>
+
+      <p class="muted">
+        A rotina diária gratuita está preparada no GitHub,
+        mas a leitura automática dos scans e das avaliações
+        ainda depende da configuração das conexões autorizadas.
+      </p>
+    </section>
+
+  </aside>
+</div>
+
+</main>
+
+<footer>
+  Garden Analytics · Onde os resultados florescem.
+  <p>Projeto independente do sistema de reputação original.</p>
+</footer>
+
 <script>
-const key='garden-analytics-daily-v1',E=id=>document.getElementById(id),num=n=>Number(n).toLocaleString('pt-BR');
-E('date').value=new Date().toLocaleDateString('en-CA');E('today').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
-let items=[];try{const v=JSON.parse(localStorage.getItem(key)||'[]');items=Array.isArray(v)?v:[]}catch(e){}
-items=items.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&Number.isFinite(+x.scans)&&Number.isFinite(+x.total));
-function persist(){items.sort((a,b)=>a.date.localeCompare(b.date));localStorage.setItem(key,JSON.stringify(items));draw()}
-function draw(){items.sort((a,b)=>a.date.localeCompare(b.date));const last=items.at(-1),prev=items.at(-2),difference=last&&prev?last.total-prev.total:null,match=last&&prev&&((new Date(last.date+'T12:00:00')-new Date(prev.date+'T12:00:00'))/86400000===1),rate=match&&last.scans>0&&difference>=0?difference/last.scans:null;E('scans').textContent=last?num(last.scans):'—';E('reviews').textContent=difference===null?'—':num(difference);E('conversion').textContent=rate===null?'—':(rate*100).toFixed(1).replace('.',',')+'%';E('perreview').textContent=rate===null||difference===0?'—':(last.scans/difference).toFixed(1).replace('.',',');
-E('history').innerHTML=items.length?items.slice().reverse().map((a,i)=>{const originalIndex=items.length-1-i,p=items[originalIndex-1],d=p?a.total-p.total:null,consecutive=p&&(new Date(a.date+'T12:00:00')-new Date(p.date+'T12:00:00'))/86400000===1,r=consecutive&&a.scans>0&&d>=0?(100*d/a.scans).toFixed(1).replace('.',',')+'%':'—';return '<tr><td>'+a.date.split('-').reverse().join('/')+'</td><td>'+num(a.scans)+'</td><td>'+num(a.total)+'</td><td>'+(d===null?'—':num(d))+'</td><td>'+r+'</td></tr>'}).join(''):'<tr><td colspan="5">Nenhum registro ainda. Comece pelo formulário acima.</td></tr>';
-E('goals').innerHTML=[1500,2000].map(n=>{const current=last?last.total:0,pct=Math.min(100,current/n*100);return '<div class="goal"><div class="goal-line"><strong>'+num(n)+' avaliações</strong><span>'+pct.toFixed(1).replace('.',',')+'%</span></div><div class="progress"><div style="width:'+pct+'%"></div></div><p>'+(last?'Faltam '+num(Math.max(0,n-current))+' avaliações':'Informe o total atual do Google')+'</p></div>'}).join('');
-const data=items.slice(-7),max=Math.max(1,...data.map(x=>x.scans),...data.map((x,i)=>{const p=items[items.indexOf(x)-1];return p?Math.max(0,x.total-p.total):0}));E('chart').innerHTML=data.length<2?'<div class="empty">Registre pelo menos dois dias para visualizar a evolução.</div>':data.map(x=>{const i=items.indexOf(x),p=items[i-1],d=p?Math.max(0,x.total-p.total):0;return '<div class="bar-day"><div class="bar-group"><div class="bar" title="'+x.scans+' scans" style="height:'+Math.max(0,x.scans/max*100)+'%"></div><div class="bar review" title="'+d+' avaliações novas" style="height:'+Math.max(0,d/max*100)+'%"></div></div><div class="day-label">'+x.date.substring(8,10)+'/'+x.date.substring(5,7)+'</div></div>'}).join('')}
-E('save').onclick=()=>{const date=E('date').value,scanvalue=E('scancount').value,totalvalue=E('totalreviews').value,scans=+scanvalue,total=+totalvalue;if(!date||scanvalue===''||totalvalue===''||!Number.isInteger(scans)||!Number.isInteger(total)||scans<0||total<0){E('status').textContent='Informe data, scans e total do Google com valores válidos.';return}items=items.filter(x=>x.date!==date);items.push({date,scans,total});persist();E('status').textContent='Registro salvo com sucesso neste navegador.'};
-E('clear').onclick=()=>{if(confirm('Deseja apagar o histórico salvo neste navegador?')){items=[];persist();E('status').textContent='Histórico apagado.'}};
-E('export').onclick=()=>{const content='data,scans_dia,total_avaliacoes_google\n'+items.map(x=>[x.date,x.scans,x.total].join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+content],{type:'text/csv;charset=utf-8'}));a.download='garden-analytics-historico.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
-E('csv').onchange=async e=>{const f=e.target.files[0];if(!f)return;const t=await f.text(),lines=t.replace(/^\uFEFF/,'').trim().split(/\r?\n/),sep=(lines[0].match(/;/g)||[]).length>(lines[0].match(/,/g)||[]).length?';':',',rows=lines.map(s=>s.split(sep).map(x=>x.replace(/^"|"$/g,'').trim())),hdr=rows[0].map(x=>x.toLowerCase()),idx=hdr.findIndex(x=>x.includes('scan'));if(idx<0){E('csvresult').textContent='Não encontrei a coluna de scans. Confirme o formato do CSV.';return}let sum=0,count=0;for(const r of rows.slice(1)){const n=Number((r[idx]||'').replace(/\./g,'').replace(',','.'));if(Number.isFinite(n)&&n>=0){sum+=n;count++}}E('csvresult').textContent=f.name+' • '+count+' linhas • '+num(sum)+' scans acumulados. Não são avaliações reais nem necessariamente scans de hoje.'};draw();
-</script></body></html>
+const STORAGE_KEY = "garden-analytics-daily-v1";
+const $ = id => document.getElementById(id);
+const fmt = n => Number(n).toLocaleString("pt-BR");
+
+$("date").value = new Date().toLocaleDateString("en-CA");
+
+let records = [];
+
+try {
+  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  records = Array.isArray(stored) ? stored : [];
+} catch (error) {
+  records = [];
+}
+
+function ordered() {
+  records.sort((a,b) => a.date.localeCompare(b.date));
+  return records;
+}
+
+function dailyDifference(index) {
+  if (index === 0) return null;
+
+  const previous = new Date(records[index-1].date + "T12:00:00");
+  const current = new Date(records[index].date + "T12:00:00");
+  const days = Math.round((current-previous)/86400000);
+
+  if (days !== 1) return null;
+
+  return records[index].total - records[index-1].total;
+}
+
+function render() {
+  ordered();
+
+  const last = records.at(-1);
+  const index = records.length - 1;
+  const difference = index >= 1 ? dailyDifference(index) : null;
+
+  const conversion = last && difference !== null &&
+    difference >= 0 && last.scans > 0
+    ? difference / last.scans
+    : null;
+
+  $("scans").textContent = last ? fmt(last.scans) : "—";
+  $("reviews").textContent = difference === null ? "—" : fmt(difference);
+  $("conversion").textContent = conversion === null
+    ? "—" : (conversion*100).toFixed(1).replace(".",",") + "%";
+
+  $("ratio").textContent = conversion && conversion > 0
+    ? (1/conversion).toFixed(1).replace(".",",")
+    : "—";
+
+  $("goals").innerHTML = [1500,2000].map(goal => {
+    const current = last ? last.total : 0;
+    const percentage = Math.min(100, current/goal*100);
+    const remaining = Math.max(0,goal-current);
+
+    return `
+      <div class="goal">
+        <div class="goal-head">
+          <strong>${fmt(goal)} avaliações</strong>
+          <span>${percentage.toFixed(1).replace(".",",")}%</span>
+        </div>
+        <div class="progress">
+          <div class="fill" style="width:${percentage}%"></div>
+        </div>
+        <p class="muted">
+          ${last ? "Faltam "+fmt(remaining)+" avaliações" : "Sem dados"}
+        </p>
+      </div>
+    `;
+  }).join("");
+
+  $("history").innerHTML = records.length
+    ? records.map((r,i) => {
+        const d = dailyDifference(i);
+        const rate = d !== null && d >= 0 && r.scans > 0
+          ? (d/r.scans*100).toFixed(1).replace(".",",")+"%"
+          : "—";
+
+        return `
+          <tr>
+            <td>${r.date.split("-").reverse().join("/")}</td>
+            <td>${fmt(r.scans)}</td>
+            <td>${fmt(r.total)}</td>
+            <td>${d === null ? "—" : fmt(d)}</td>
+            <td>${rate}</td>
+          </tr>
+        `;
+      }).reverse().join("")
+    : '<tr><td colspan="5">Nenhum registro disponível.</td></tr>';
+
+  renderChart();
+}
+
+function renderChart() {
+  const recent = records.slice(-7);
+
+  if (recent.length < 2) {
+    $("chart").innerHTML =
+      '<p class="muted">Registre pelo menos dois dias para visualizar o gráfico.</p>';
+    return;
+  }
+
+  const data = recent.map(r => {
+    const i = records.indexOf(r);
+    const d = dailyDifference(i);
+    return { ...r, newReviews: Math.max(0,d ?? 0) };
+  });
+
+  const max = Math.max(
+    1,
+    ...data.map(r=>r.scans),
+    ...data.map(r=>r.newReviews)
+  );
+
+  $("chart").innerHTML = data.map(r => `
+    <div class="day">
+      <div class="bars">
+        <div class="bar"
+          title="${r.scans} scans"
+          style="height:${r.scans/max*100}%"></div>
+        <div class="bar review"
+          title="${r.newReviews} avaliações"
+          style="height:${r.newReviews/max*100}%"></div>
+      </div>
+      <div>${r.date.slice(8,10)}/${r.date.slice(5,7)}</div>
+    </div>
+  `).join("");
+}
+
+function saveRecord() {
+  const date = $("date").value;
+  const scanValue = $("scanInput").value;
+  const reviewValue = $("reviewInput").value;
+  const scans = Number(scanValue);
+  const total = Number(reviewValue);
+
+  if (!date || scanValue === "" || reviewValue === "" ||
+      !Number.isInteger(scans) || !Number.isInteger(total) ||
+      scans < 0 || total < 0) {
+    $("message").textContent = "Preencha os campos corretamente.";
+    return;
+  }
+
+  records = records.filter(r => r.date !== date);
+  records.push({date,scans,total});
+
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(ordered()));
+
+  $("message").textContent = "Registro salvo com sucesso.";
+  render();
+}
+
+function exportHistory() {
+  const header = "data,scans_dia,total_avaliacoes_google";
+  const rows = ordered().map(r => `${r.date},${r.scans},${r.total}`);
+  const content = "\uFEFF" + [header,...rows].join("\n");
+
+  const url = URL.createObjectURL(
+    new Blob([content], {type:"text/csv;charset=utf-8"})
+  );
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "garden-analytics-historico.csv";
+  a.click();
+
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function clearHistory() {
+  if (confirm("Deseja apagar o histórico deste navegador?")) {
+    records = [];
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+  }
+}
+
+$("csvFile").addEventListener("change",async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const text = await file.text();
+  const lines = text.replace(/^\uFEFF/,"").trim().split(/\r?\n/);
+  const separator = lines[0].includes(";") ? ";" : ",";
+
+  const rows = lines.map(line =>
+    line.split(separator).map(value => value.replace(/^"|"$/g,"").trim())
+  );
+
+  const headers = rows[0].map(value=>value.toLowerCase());
+  const scanColumn = headers.findIndex(value=>value.includes("scan"));
+
+  if (scanColumn === -1) {
+    $("csvResult").textContent = "Coluna de scans não encontrada.";
+    return;
+  }
+
+  let total = 0;
+
+  rows.slice(1).forEach(row => {
+    const value = (row[scanColumn] || "")
+      .replace(/\./g,"")
+      .replace(",",".");
+
+    const number = Number(value);
+
+    if (value !== "" && Number.isFinite(number)) {
+      total += number;
+    }
+  });
+
+  $("csvResult").textContent =
+    `${fmt(total)} scans identificados no relatório. ` +
+    "Esse número não representa avaliações reais.";
+});
+
+render();
+</script>
+
+</body>
+</html>
