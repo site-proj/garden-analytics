@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -25,9 +25,9 @@ body {
   margin: 0;
   background: var(--fundo);
   color: var(--texto);
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
+  font-family: "Inter", "DM Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
 }
 header {
   background: var(--verde);
@@ -48,12 +48,9 @@ header {
   border-radius: 12px;
   background: #000;
 }
-h1, h2 {
-  font-family: "Playfair Display", Georgia, serif;
-  line-height: 1.2;
-}
+h1, h2 { font-family: "DM Sans", Arial, sans-serif; line-height: 1.18; letter-spacing: -0.035em; font-weight: 700; }
 header h1 {
-  font-size: 34px;
+  font-size: 32px;
   margin: 0 0 8px;
 }
 header p {
@@ -248,13 +245,14 @@ footer {
   .fields { grid-template-columns: 1fr; }
   .card { padding: 18px; }
 }
+.logo-wrap{width:110px;height:110px;flex:none;display:grid;place-items:center;border-radius:12px;background:#0b0c0b;overflow:hidden}.logo{width:100%;height:100%;object-fit:contain;display:block;background:transparent;border-radius:0}.logo-fallback{text-align:center;color:#fff;font:700 28px/1 Georgia,serif;letter-spacing:-1px}.logo-fallback small{font-size:21px}.metric strong{font-family:"Inter",Arial,sans-serif;font-weight:800}.card{box-shadow:0 4px 18px #122e2308}.intro h2{font-size:26px}button{transition:background .15s,transform .15s}button:focus-visible,input:focus-visible{outline:3px solid #a2c9b4;outline-offset:2px}button:hover{transform:translateY(-1px)}@media(max-width:600px){.logo-wrap{width:95px;height:95px}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <img src="logo-garden.png" alt="Garden Café" class="logo">
+    <div class="logo-wrap"><img src="logo-garden.png" alt="Logotipo Garden Café" class="logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">garden<br><small>café</small></span></div>
     <div>
       <h1>Garden Analytics</h1>
       <p>Inteligência de reputação e experiência do cliente</p>
