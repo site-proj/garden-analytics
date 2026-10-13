@@ -1,0 +1,33 @@
+name: Garden Analytics - verificacao diaria
+on:
+  schedule:
+    - cron: '0 5 * * *' # 02:00 Brasilia (UTC-3)
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verificar-fontes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verificar configuracao sem revelar credenciais
+        env:
+          GARDEN_SOURCE_URL: ${{ secrets.GARDEN_SOURCE_URL }}
+          GARDEN_SOURCE_TOKEN: ${{ secrets.GARDEN_SOURCE_TOKEN }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_ACCOUNT_ID: ${{ secrets.GOOGLE_ACCOUNT_ID }}
+          GOOGLE_LOCATION_ID: ${{ secrets.GOOGLE_LOCATION_ID }}
+        run: |
+          python - <<'PY'
+          import os
+          needed = ['GARDEN_SOURCE_URL','GARDEN_SOURCE_TOKEN','GOOGLE_REFRESH_TOKEN','GOOGLE_CLIENT_ID','GOOGLE_CLIENT_SECRET','GOOGLE_ACCOUNT_ID','GOOGLE_LOCATION_ID']
+          missing=[k for k in needed if not os.getenv(k)]
+          if missing:
+              print('Coleta ainda NAO configurada. Faltam autorizacoes de ambas as fontes.')
+              print('Consulte INTEGRACAO.md. Nenhuma consulta ou comparacao foi executada.')
+          else:
+              print('Credenciais cadastradas, mas endpoints ainda exigem validacao de leitura.')
+              print('Nao foram coletados nem publicados dados: ativar somente apos testes.')
+          PY
