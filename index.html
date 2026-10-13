@@ -275,6 +275,61 @@ footer{font-size:12px}
 @media(max-width:950px){.layout{grid-template-columns:1fr}}
 @media(max-width:600px){header{padding:22px 18px 82px}.header-inner{align-items:center;flex-direction:row;text-align:left;gap:14px}.logo-wrap{width:80px!important;height:80px!important;flex:none}header h1{font-size:27px}.brand-caption{font-size:9px;letter-spacing:1.1px}header p{font-size:12px}.intro{padding:23px}.metrics{grid-template-columns:repeat(2,1fr);gap:9px}.metric{min-height:136px;padding:17px}.metric strong{font-size:29px}.card{padding:19px;border-radius:17px}main{padding:0 11px 40px}.fields{grid-template-columns:1fr}.intro h2{font-size:29px}}
 
+
+/* Garden Analytics — Premium Tech 2.0 */
+:root{--verde:#103426;--verde-claro:#29624b;--fundo:#f2f4f0;--texto:#182d23;--cinza:#53685b;--borda:#e4e9e4}
+body{background:radial-gradient(circle at 94% 4%,#dce7dc 0,transparent 31%),linear-gradient(180deg,#eef2ed 0%,#f8faf7 36%,#f5f7f3 100%);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+header{background:radial-gradient(ellipse at 82% 8%,#326a50 0%,transparent 43%),linear-gradient(114deg,#071e15 0%,#103f2c 58%,#173c2d 100%);padding:35px 24px 120px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;width:550px;height:550px;right:-80px;top:-280px;border:1px solid #ffffff20;border-radius:50%;box-shadow:0 0 0 65px #ffffff05,0 0 0 150px #ffffff04;pointer-events:none}
+.header-inner{position:relative;z-index:1;max-width:1280px}
+.brand-caption{font-size:11px;letter-spacing:2.5px;color:#c5d9cb}
+header h1{font-size:clamp(31px,3.3vw,46px)!important;letter-spacing:-.07em}
+header h1 span{color:#d2dfd1;font-weight:500}
+header p{font-size:15px;letter-spacing:.05px;color:#bbd4c3}
+.logo-wrap{width:120px!important;height:115px!important;filter:drop-shadow(0 7px 12px #0000001a)}
+main{max-width:1280px;margin-top:-80px}
+.intro{position:relative;isolation:isolate;overflow:hidden;min-height:258px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:radial-gradient(circle at 94% 10%,#d5e6d7 0%,transparent 41%),linear-gradient(125deg,#fff,#f6f8f4);border:1px solid #e1e9df;padding:40px 48px!important;box-shadow:0 20px 70px #10382617}
+.intro:before{content:"";position:absolute;width:360px;height:360px;right:-85px;top:-190px;border:1px solid #215d3a26;border-radius:50%;box-shadow:0 0 0 55px #245b3210,0 0 0 120px #245b3209;z-index:-1}
+.hero-accent{position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,#a98b57,#3e9169)}
+.intro .eyebrow{color:#39704d;font-size:11px;letter-spacing:2px;margin-bottom:7px}
+.intro h2{font-size:clamp(34px,4.1vw,55px);font-weight:800;letter-spacing:-.072em;line-height:1.08;margin:7px 0 17px;max-width:850px}
+.intro h2 em{font-style:normal;background:linear-gradient(90deg,#1e6348,#5c9575);color:transparent;background-clip:text;-webkit-background-clip:text}
+.intro p{max-width:700px;font-size:16px;color:#566d5e;line-height:1.7}
+.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:37px 3px 17px;flex-wrap:wrap}
+.section-heading h2{font-size:26px;letter-spacing:-.055em;margin:2px 0 0;color:#173d2d}
+.section-kicker{font-size:10px;font-weight:800;letter-spacing:2.3px;color:#7b957f}
+.snapshot-label{font-size:12px;color:#6c826f;background:#ffffffa8;border:1px solid #dde8de;padding:8px 13px;border-radius:20px}
+.metrics{gap:16px}
+.metric{position:relative;overflow:hidden;min-height:194px;padding:27px!important;border:1px solid #e5ece5!important;border-top:1px solid #e5ece5!important;background:linear-gradient(156deg,#fff 36%,#f8fbf8 100%);box-shadow:0 12px 28px #173c2510!important;transition:transform .2s ease,box-shadow .2s ease;border-radius:23px!important}
+.metric:hover{transform:translateY(-4px);box-shadow:0 19px 35px #173c2518!important}
+.metric:after{content:"";position:absolute;width:135px;height:135px;right:-78px;top:-77px;border-radius:50%;background:#57916d12;box-shadow:0 0 0 25px #57916d08}
+.metric:nth-child(1){background:linear-gradient(142deg,#123f2d,#235d42);border-color:#1a4c35!important;color:#fff}
+.metric:nth-child(1):after{background:#ffffff18;box-shadow:0 0 0 28px #ffffff0b}
+.metric:nth-child(1) span,.metric:nth-child(1) small,.metric:nth-child(1) strong{color:#fff}
+.metric:nth-child(1) small{opacity:.73}
+.metric span{font-size:12px;letter-spacing:.3px}
+.metric strong{font-size:clamp(39px,4vw,54px);font-weight:800;letter-spacing:-.078em;margin:23px 0 10px;position:relative;z-index:1}
+.metric small{font-size:12px;line-height:1.5}
+.metric:nth-child(2):before,.metric:nth-child(3):before,.metric:nth-child(4):before{content:"";position:absolute;left:26px;top:0;width:48px;height:3px;border-radius:0 0 6px 6px}
+.metric:nth-child(2):before{background:#fbbc05}.metric:nth-child(3):before{background:#4285f4}.metric:nth-child(4):before{background:#bd9b64}
+.secondary-heading{margin-top:29px}
+.layout{gap:18px;grid-template-columns:minmax(0,1.7fr) minmax(310px,1fr)}
+.layout .card{box-shadow:0 7px 25px #0d322110;border-radius:23px;min-width:0}
+.layout h2{font-size:23px;letter-spacing:-.055em}
+.chart{height:280px;padding:20px 0 12px;background:repeating-linear-gradient(180deg,transparent 0,transparent 51px,#eaf0e9 52px,#eaf0e9 53px);border-bottom:1px solid #dfe9df;border-radius:9px 9px 0 0}
+.bars{height:205px}.bar{background:linear-gradient(180deg,#5c9a74,#256142);border-radius:7px 7px 0 0}.bar.review{background:linear-gradient(180deg,#ffd763,#eeb72e)}
+.legend{font-weight:600;letter-spacing:.1px}
+.fields input{background:#fafcfa;border:1px solid #dce7dd;border-radius:13px;min-height:50px}
+button{border-radius:12px;box-shadow:none}button:not(.danger):hover{filter:brightness(1.07)}
+button:active{transform:scale(.99)}
+.status{background:#fff6e8;border:1px solid #f2e4c8}
+.reviews-card{background:linear-gradient(140deg,#fff,#f5f9f5);border-top:1px solid #e5ece5!important}
+.google-g{font-weight:900;font-size:35px;background:conic-gradient(#4285f4 0 22%,#34a853 22% 38%,#fbbc05 38% 55%,#ea4335 55% 76%,#4285f4 76% 100%);color:transparent;background-clip:text;-webkit-background-clip:text;text-shadow:none}
+.stars{color:#e8ae17}
+@media(max-width:950px){.layout{grid-template-columns:1fr}}
+@media(max-width:620px){header{padding:25px 15px 103px}.header-inner{flex-direction:row;align-items:center;text-align:left}.logo-wrap{width:82px!important;height:82px!important}.intro{padding:25px 23px!important;min-height:245px}.intro h2{font-size:35px}.intro p{font-size:14px}.section-heading{margin-top:25px}.metrics{grid-template-columns:repeat(2,1fr)}.metric{padding:20px!important;min-height:162px}.metric strong{font-size:37px;margin-top:17px}.metric small{font-size:11px}.snapshot-label{font-size:11px}.chart{height:245px}.bars{height:170px}}
+@media(max-width:390px){.metrics{grid-template-columns:1fr}.metric{min-height:155px}.metric strong{font-size:46px}}
+
 </style>
 </head>
 <body>
@@ -291,15 +346,15 @@ footer{font-size:12px}
 
 <main>
 
-<section class="card intro">
+<section class="card intro"><div class="hero-accent" aria-hidden="true"></div>
   <div class="eyebrow">GOOGLE REVIEWS INSIGHTS <span class="g-points"><i></i><i></i><i></i><i></i></span></div>
-  <h2>Acompanhe a experiência.<br>Entenda a reputação.</h2>
+  <h2>Inteligência que transforma<br><em>experiências em resultados.</em></h2>
   <p>
-    Um panorama claro de scans, avaliações publicadas no Google e conversão estimada — com a identidade do Garden.
+    A jornada entre o QR Code e as avaliações do Google, traduzida em dados, tendências e decisões mais inteligentes.
   </p>
 </section>
 
-<div class="metrics">
+<div class="section-heading"><div><span class="section-kicker">PERFORMANCE</span><h2>Visão geral <span class="heading-spark">✳</span></h2></div><span class="snapshot-label">Dados do histórico registrado</span></div><div class="metrics">
   <div class="card metric">
     <span>Scans do último registro</span>
     <strong id="scans">—</strong>
@@ -325,11 +380,11 @@ footer{font-size:12px}
   </div>
 </div>
 
-<div class="layout">
+<div class="section-heading secondary-heading"><div><span class="section-kicker">INTELIGÊNCIA DE REPUTAÇÃO</span><h2>Resultados e tendências</h2></div><span class="snapshot-label">Google Reviews Insights</span></div><div class="layout">
   <div>
 
     <section class="card">
-      <h2>Evolução diária <span class="heading-spark">✦</span></h2>
+      <h2>Evolução diária <span class="heading-spark">↗</span></h2>
       <p class="legend">■ Verde: scans | ■ Dourado: avaliações</p>
       <div id="chart" class="chart">
         <p class="muted">Aguardando registros.</p>
@@ -341,7 +396,7 @@ footer{font-size:12px}
     </section>
 
     <section class="card">
-      <h2>Registrar acompanhamento</h2>
+      <h2>Adicionar dados <span class="heading-spark">＋</span></h2>
 
       <div class="fields">
         <div>
@@ -371,7 +426,7 @@ footer{font-size:12px}
     </section>
 
     <section class="card">
-      <h2>Histórico de resultados</h2>
+      <h2>Histórico de performance</h2>
 
       <button class="alt" onclick="exportHistory()">Exportar CSV</button>
       <button class="danger" onclick="clearHistory()">Limpar histórico</button>
